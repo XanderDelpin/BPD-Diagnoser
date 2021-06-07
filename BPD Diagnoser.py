@@ -56,7 +56,7 @@ def check_for_suicide():
         print("-----------------------------------------------------------------------------------------------------------------------------------------\n")
 
 def print_end_note():
-    print("This is the end of the program.\n\nRemember, I am not a trained doctor of any kind; these assumptions are in no way final and you should consult your doctor before building any concrete ideas!")
+    print("This is the end of the program.\n\nRemember, I am not a trained doctor of any kind; these assumptions are in no way final and you should consult your doctor before building any concrete ideas!\n")
     print("-----------------------------------------------------------------------------------------------------------------------------------------")
     print("-----------------------------------------------------------------------------------------------------------------------------------------\n")
 
@@ -80,17 +80,23 @@ if start == "Y":
             if add_symptom == 'done':
                 is_ongoing = False
                 break
-            else:
-                print(f"\nYou have to enter a number between 1 and {len(bpd_symptoms)} or type 'done' when you're finished!\n")
-                continue
-
         if symp > 0 and symp <= len(bpd_symptoms):
             my_symptoms.append(bpd_symptoms[symp - 1])
             bpd_symptoms.remove(bpd_symptoms[symp - 1])
             continue
         else:
-            print(f"\nYou have to enter a number between 1 and {len(bpd_symptoms)} or type 'done' when you're finished!\n")
-            continue
+            if len(bpd_symptoms) == 0:
+                print("\n\n")
+                print(f"\nIt seems like you have selected all symptoms. Please type 'done'.\n")
+                continue
+            elif len(bpd_symptoms) == 1:
+                print("\n\n")
+                print(f"\nIt seems like there's only one symptom left! You can add it to your symptom list or type 'done' once you're finished!\n")
+                continue
+            else:
+                print("\n\n")
+                print(f"\nYou have to enter a number between 1 and {len(bpd_symptoms)} or type 'done' when you're finished!\n")
+                continue
     print(f"It appears you have {len(my_symptoms)} symptoms\n")
     print("I will now calculate your results using complex algorithms and calculus (just counting hehe)\n\n")
 
